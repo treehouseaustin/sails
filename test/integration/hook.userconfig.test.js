@@ -40,7 +40,7 @@ describe('hooks :: ', function() {
       it('should merge config options regardless of file structure', function(done) {
 
         sailsApp = Sails();
-        sailsApp.load({hooks:{grunt:false}}, function(err, sails) {
+        sailsApp.load({}, function(err, sails) {
           if (err) { return callback(err); }
           assert.equal(sails.config.foo, 'bar');
           assert.equal(sails.config.abc, 123);
@@ -62,7 +62,7 @@ describe('hooks :: ', function() {
       it('should use filenames in subfolders as keys', function(done) {
 
         sailsApp = Sails();
-        sailsApp.load({hooks:{grunt:false}, dontFlattenConfig: true}, function(err, sails) {
+        sailsApp.load({dontFlattenConfig: true}, function(err, sails) {
           if (err) { return callback(err); }
           assert.equal(sails.config.foo, 'goo');
           assert.equal(sails.config.bar.foo, 'bar');
@@ -84,7 +84,7 @@ describe('hooks :: ', function() {
       var sails;
       before(function(done) {
         sails = Sails();
-        sails.load({hooks:{grunt:false}, dontFlattenConfig: true}, done);
+        sails.load({dontFlattenConfig: true}, done);
       });
 
       it('should load config from config/env/development.js', function() {
@@ -114,7 +114,7 @@ describe('hooks :: ', function() {
       var sails;
       before(function(done) {
         sails = Sails();
-        sails.load({hooks:{grunt:false}, dontFlattenConfig: true, environment: 'test-development'}, done);
+        sails.load({dontFlattenConfig: true, environment: 'test-development'}, done);
       });
 
       it('should load config from config/env/test-development.js', function() {

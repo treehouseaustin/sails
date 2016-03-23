@@ -50,9 +50,6 @@ describe('blueprints :: ', function() {
 
       before(function(done) {
         sails.load({
-          hooks: {
-            grunt: false
-          },
           globals: false,
           log: {
             level: 'silent'
@@ -90,5 +87,3 @@ describe('blueprints :: ', function() {
     });//</describe(updating a model with a non-primary-key "id" attribute)>
   });//</describe>
 });//</describe>
-
-

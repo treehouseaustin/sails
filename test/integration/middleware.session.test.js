@@ -27,7 +27,6 @@ describe('middleware :: ', function() {
             session: {
               secret: 'abc123'
             },
-            hooks: {grunt: false},
             routes: {
               '/test': function(req, res) {
                 var count = req.session.count || 1;
@@ -98,7 +97,6 @@ describe('middleware :: ', function() {
             session: {
               secret: 12345
             },
-            hooks: {grunt: false},
             routes: {
               '/test': function(req, res) {
                 res.json({

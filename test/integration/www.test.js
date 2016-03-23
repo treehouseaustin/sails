@@ -77,62 +77,6 @@ describe('Running sails www', function() {
 
   });
 
-  describe('with command line arguments', function() {
-    afterEach(function(done) {
-      sailsChildProc.stderr.removeAllListeners('data');
-      process.chdir('../');
-      sailsChildProc.kill();
-      return done();
-    });
-
-    it('--dev should execute grunt build', function(done) {
-
-      // Move into app directory
-      process.chdir(appName);
-
-      // Change environment to production in config file
-      fs.writeFileSync('config/application.js', 'module.exports = ' + JSON.stringify({
-        appName: 'Sails Application',
-        port: 1342,
-        environment: 'production',
-        log: {
-          level: 'info'
-        }
-      }));
-
-      sailsChildProc = spawn('node', [sailsBin, 'www', '--dev']);
-
-      sailsChildProc.stdout.on('data', function(data) {
-        var dataString = data + '';
-        if (dataString.indexOf('`grunt build`') !== -1) {
-          done();
-        }
-      });
-    });
-
-
-    it('--prod should execute grunt buildProd', function(done) {
-
-      // Move into app directory
-      process.chdir(appName);
-
-      // Overrwrite session config file
-      // to set session adapter:null ( to prevent warning message from appearing on command line )
-      fs.writeFileSync('config/session.js', 'module.exports.session = { adapter: null }');
-
-      sailsChildProc = spawn('node', [sailsBin, 'www', '--prod']);
-
-      sailsChildProc.stdout.on('data', function(data) {
-        var dataString = data + '';
-        if (dataString.indexOf('`grunt buildProd`') !== -1) {
-
-          done();
-        }
-      });
-    });
-
-  });
-
   after(function() {
     if (fs.existsSync(appName)) {
       fs.removeSync(appName);

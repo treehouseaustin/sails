@@ -94,14 +94,6 @@ cmd.alias('c');
 cmd.action(require('./sails-console'));
 
 
-// $ sails www
-// Compile `assets` directory into a standalone `www` folder.
-cmd = program.command('www');
-cmd.unknownOption = NOOP;
-cmd.description('');
-cmd.action(require('./sails-www'));
-
-
 
 // $ sails debug
 cmd = program.command('debug');

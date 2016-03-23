@@ -32,7 +32,6 @@ describe('middleware :: ', function() {
             session: {
               secret: 'abc123'
             },
-            hooks: {grunt: false},
             routes: {
               '/test': function(req, res) {
                 res.json({
@@ -87,8 +86,7 @@ describe('middleware :: ', function() {
               secret: null
             },
             hooks: {
-              session: false,
-              grunt: false
+              session: false
             },
             routes: {
               '/test': function(req, res) {
@@ -146,8 +144,7 @@ describe('middleware :: ', function() {
               secret: 12345
             },
             hooks: {
-              session: false,
-              grunt: false
+              session: false
             },
             routes: {
               '/test': function(req, res) {
