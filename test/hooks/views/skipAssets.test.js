@@ -96,5 +96,3 @@ describe('skipAssets', function() {
 
   });//</Generate and lift a sails app which has a wildcard route using skipAssets>
 });
-
-
