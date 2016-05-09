@@ -7,7 +7,7 @@
 
 var path = require('path');
 var Womb = require('child_process');
-var CaptainsLog = require('captains-log');
+const winston = require('winston');
 var chalk = require('chalk');
 var Sails = require('../lib/app');
 
@@ -22,7 +22,7 @@ var Sails = require('../lib/app');
  * @see http://sailsjs.org/documentation/reference/command-line-interface/sails-debug
  */
 module.exports = function() {
-  var log = CaptainsLog();
+  var log = winston;
 
   // Use the app's local Sails in `node_modules` if one exists
   // But first make sure it'll work...

@@ -8,7 +8,7 @@
 var nodepath = require('path');
 var _ = require('lodash');
 var chalk = require('chalk');
-var captains = require('captains-log');
+const winston = require('winston');
 var package = require('../package.json');
 var rconf = require('../lib/app/configuration/rc');
 var Sails = require('../lib/app');
@@ -27,12 +27,11 @@ var Sails = require('../lib/app');
 
 module.exports = function() {
 
-  // console.time('cli_lift');
-  // console.time('cli_prelift');
-
-  // console.time('cli_rc');
-  var log = captains(rconf.log);
-  // console.timeEnd('cli_rc');
+  var log = new winston.Logger(_.merge(rconf.log, {
+    transports: [
+      new (winston.transports.Console)()
+    ]
+  }));
 
   console.log();
   log.info(chalk.grey('Starting app...'));
@@ -73,7 +72,3 @@ module.exports = function() {
     // try {console.timeEnd('cli_lift');}catch(e){}
   }
 };
-
-
-
-

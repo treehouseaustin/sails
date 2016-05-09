@@ -10,7 +10,7 @@ var REPL = require('repl');
 var fs = require('fs');
 var _ = require('lodash');
 var chalk = require('chalk');
-var CaptainsLog = require('captains-log');
+const winston = require('winston');
 var Sails = require('../lib/app');
 var rconf = require('../lib/app/configuration/rc');
 var Err = require('../errors');
@@ -41,20 +41,15 @@ var package = require('../package.json');
 
 module.exports = function() {
 
-  // Get a logger
-  var log = CaptainsLog(rconf.log);
+  var log = new winston.Logger(_.merge(rconf.log, {
+    transports: [ new (winston.transports.Console)() ]
+  }));
 
   // Build initial scope, mixing-in rc config
   var scope = _.merge({
     rootPath: process.cwd(),
     sailsPackageJSON: package
-  }, rconf, {
-
-    // Disable ASCII ship to keep from dirtying things up
-    log: {
-      noShip: true
-    }
-  });
+  }, rconf);
 
   // Assume the current working directory to be the root of the app
   var appPath = process.cwd();

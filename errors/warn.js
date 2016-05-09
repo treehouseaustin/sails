@@ -1,12 +1,17 @@
 /**
  * Module dependencies
  */
-
+const _ = require('lodash');
 var nodepath = require('path');
 
 // Build logger using best-available information
 // when this module is initially required.
-var log = require('captains-log')(require('../lib/app/configuration/rc'));
+const winston = require('winston');
+var log = new winston.Logger(_.merge(require('../lib/app/configuration/rc'), {
+  transports: [
+    new (winston.transports.Console)()
+  ]
+}));
 
 
 /**
@@ -24,7 +29,6 @@ module.exports = {
     log.warn('If you run into compatibility issues, try installing ' + requiredVersion + ' locally:');
     log.warn('    $ npm install sails@' + requiredVersion);
     log.warn();
-    log.blank();
   },
 
 
