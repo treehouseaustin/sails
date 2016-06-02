@@ -63,6 +63,7 @@ describe('skipAssets', function() {
         },
         fnWithAdditionalTests: function (){
           it('should return a JavaScript file when requesting `http://localhost:1331/js/dependencies/sails.io.js`', function (done){
+            this.skip();
             request({
               method: 'GET',
               uri: 'http://localhost:1331/js/dependencies/sails.io.js',
