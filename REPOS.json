@@ -59,21 +59,6 @@
 
 
   {
-  	"repoName": "skipper",
-  	"owner": "balderdashy"
-  },
-  {
-  	"repoName": "skipper-disk",
-  	"owner": "balderdashy"
-  },
-  {
-  	"repoName": "skipper-s3",
-  	"owner": "balderdashy"
-  },
-
-
-
-  {
   	"repoName": "sails-generate",
   	"owner": "balderdashy"
   },
