@@ -1,13 +1,19 @@
 /**
  * Module dependencies
  */
+const _ = require('lodash');
 var nodeutil = require('util');
 var nodepath = require('path');
 var chalk = require('chalk');
 
 // Build logger using best-available information
 // when this module is initially required.
-var log = require('captains-log')(require('../lib/app/configuration/rc'));
+const winston = require('winston');
+var log = new winston.Logger(_.merge(require('../lib/app/configuration/rc'), {
+  transports: [
+    new (winston.transports.Console)()
+  ]
+}));
 
 /**
  * Fatal Errors
