@@ -46,6 +46,15 @@ describe('skipAssets', function() {
       }).exec(done);
     });
 
+    // Mock the copy of Sails.io dependency that Grunt would have done for us.
+    before(function (done){
+      MFilesystem.write({
+        destination: path.join(pathToTestApp, '.tmp/public/js/dependencies/sails.io.js'),
+        string: 'function() {}',
+        force: true,
+      }).exec(done);
+    });
+
     // And CD in.
     before(function (){
       process.chdir(pathToTestApp);
@@ -96,5 +105,3 @@ describe('skipAssets', function() {
 
   });//</Generate and lift a sails app which has a wildcard route using skipAssets>
 });
-
-

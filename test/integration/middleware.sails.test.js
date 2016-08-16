@@ -30,7 +30,6 @@ describe('middleware :: ', function() {
             secret: 'abc123'
           },
           hooks: {
-            grunt: false,
             request: false
           },
           routes: {

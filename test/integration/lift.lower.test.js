@@ -24,10 +24,7 @@ describe('sails being lifted and lowered (e.g in a test framework)', function() 
         log: {
           level: 'error'
         },
-        globals: false,
-        hooks: {
-          grunt: false,
-        }
+        globals: false
       }, function(err, sails) {
         if (err) {
           return cb(err);
@@ -75,10 +72,7 @@ describe('sails being lifted and lowered (e.g in a test framework)', function() 
       log: {
         level: 'error'
       },
-      globals: false,
-      hooks: {
-        grunt: false,
-      }
+      globals: false
     }, function(err, app0) {
       if (err) { return done(err); }
 
@@ -97,10 +91,7 @@ describe('sails being lifted and lowered (e.g in a test framework)', function() 
           log: {
             level: 'error'
           },
-          globals: false,
-          hooks: {
-            grunt: false,
-          }
+          globals: false
         }, function(err, app1) {
           if (err) { return done(err); }
 
